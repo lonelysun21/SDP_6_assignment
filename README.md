@@ -101,4 +101,9 @@ Tests cover:
 - Java 17
 - Maven
 - JUnit 5
-```
+
+## UML Class Diagram
+
+![Visitor Pattern UML](docs/visitor_uml_diagram.png)
+
+[UML Diagram SVG](docs/visitor_uml_diagram.svg)

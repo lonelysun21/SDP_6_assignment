@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2350" height="1290" viewBox="0 0 2350 1290">
+<rect width="100%" height="100%" fill="white"/>
+<style>
+text { font-family: Arial, Helvetica, sans-serif; fill:#242a30; }
+.title { font-size: 40px; font-weight: 500; }
+.head { font-size: 24px; font-weight: 700; }
+.stereo { font-size: 18px; }
+.line { font-size: 19px; }
+.edge { stroke:#697582; stroke-width:2.2; fill:none; stroke-linejoin:round; }
+.implements { stroke-dasharray:10 7; }
+.dependency { stroke-dasharray:7 7; }
+.note { font-size:18px; fill:#58636f; }
+</style>
+<text class="title" x="1175" y="69" text-anchor="middle">Visitor Pattern — File System</text>
+
+<rect x="985" y="130" width="380" height="110" fill="#f1f4f8" stroke="#82909f" stroke-width="1.8"/>
+<rect x="985" y="130" width="380" height="56" fill="#e2e8f0" stroke="#82909f" stroke-width="1.8"/>
+<text class="head" text-anchor="middle" x="1175.0" y="166">Main</text>
+<text class="line" x="1002" y="215">+ main(args: String[]): void</text>
+<rect x="190" y="310" width="450" height="165" fill="#f1f4f8" stroke="#82909f" stroke-width="1.8"/>
+<rect x="190" y="310" width="450" height="82" fill="#e2e8f0" stroke="#82909f" stroke-width="1.8"/>
+<text class="stereo" text-anchor="middle" x="415.0" y="337">«interface»</text>
+<text class="head" text-anchor="middle" x="415.0" y="369">Element</text>
+<text class="line" x="207" y="421">+ getName(): String</text>
+<text class="line" x="207" y="450">+ accept(visitor: Visitor): void</text>
+<rect x="890" y="320" width="470" height="197" fill="#f1f4f8" stroke="#82909f" stroke-width="1.8"/>
+<rect x="890" y="320" width="470" height="56" fill="#e2e8f0" stroke="#82909f" stroke-width="1.8"/>
+<text class="head" text-anchor="middle" x="1125.0" y="356">FileSystemWalker</text>
+<text class="line" x="907" y="403">- visitor: Visitor</text>
+<line x1="890" y1="418" x2="1360" y2="418" class="edge" stroke-width="1.4"/>
+<text class="line" x="907" y="447">+ walk(root: Element, visitor: Visitor): void</text>
+<text class="line" x="907" y="476">+ visit(file: FileNode): void</text>
+<text class="line" x="907" y="505">+ visit(directory: DirectoryNode): void</text>
+<rect x="1635" y="300" width="570" height="194" fill="#f1f4f8" stroke="#82909f" stroke-width="1.8"/>
+<rect x="1635" y="300" width="570" height="82" fill="#e2e8f0" stroke="#82909f" stroke-width="1.8"/>
+<text class="stereo" text-anchor="middle" x="1920.0" y="327">«interface»</text>
+<text class="head" text-anchor="middle" x="1920.0" y="359">Visitor</text>
+<text class="line" x="1652" y="411">+ start(root: Element): void</text>
+<text class="line" x="1652" y="440">+ visit(file: FileNode): void</text>
+<text class="line" x="1652" y="469">+ visit(directory: DirectoryNode): void</text>
+<rect x="175" y="605" width="500" height="252" fill="#f1f4f8" stroke="#82909f" stroke-width="1.8"/>
+<rect x="175" y="605" width="500" height="82" fill="#e2e8f0" stroke="#82909f" stroke-width="1.8"/>
+<text class="stereo" text-anchor="middle" x="425.0" y="632">«abstract»</text>
+<text class="head" text-anchor="middle" x="425.0" y="664">AbstractElement</text>
+<text class="line" x="192" y="714">- name: String</text>
+<text class="line" x="192" y="743">- parent: DirectoryNode</text>
+<line x1="175" y1="758" x2="675" y2="758" class="edge" stroke-width="1.4"/>
+<text class="line" x="192" y="787">+ getName(): String</text>
+<text class="line" x="192" y="816">~ getParent(): DirectoryNode</text>
+<text class="line" x="192" y="845">~ setParent(parent: DirectoryNode): void</text>
+<rect x="60" y="1010" width="362" height="174" fill="#f1f4f8" stroke="#82909f" stroke-width="1.8"/>
+<rect x="60" y="1010" width="362" height="56" fill="#e2e8f0" stroke="#82909f" stroke-width="1.8"/>
+<text class="head" text-anchor="middle" x="241.0" y="1046">FileNode</text>
+<text class="line" x="77" y="1093">- size: long</text>
+<line x1="60" y1="1108" x2="422" y2="1108" class="edge" stroke-width="1.4"/>
+<text class="line" x="77" y="1137">+ getSize(): long</text>
+<text class="line" x="77" y="1166">+ accept(visitor: Visitor): void</text>
+<rect x="485" y="995" width="535" height="205" fill="#f1f4f8" stroke="#82909f" stroke-width="1.8"/>
+<rect x="485" y="995" width="535" height="56" fill="#e2e8f0" stroke="#82909f" stroke-width="1.8"/>
+<text class="head" text-anchor="middle" x="752.5" y="1031">DirectoryNode</text>
+<text class="line" x="502" y="1078">- children: List&lt;AbstractElement&gt;</text>
+<line x1="485" y1="1093" x2="1020" y2="1093" class="edge" stroke-width="1.4"/>
+<text class="line" x="502" y="1122">+ addChild(child: AbstractElement): void</text>
+<text class="line" x="502" y="1151">+ getChildren(): List&lt;AbstractElement&gt;</text>
+<text class="line" x="502" y="1180">+ accept(visitor: Visitor): void</text>
+<rect x="1110" y="695" width="350" height="240" fill="#f1f4f8" stroke="#82909f" stroke-width="1.8"/>
+<rect x="1110" y="695" width="350" height="56" fill="#e2e8f0" stroke="#82909f" stroke-width="1.8"/>
+<text class="head" text-anchor="middle" x="1285.0" y="731">TotalSizeVisitor</text>
+<text class="line" x="1127" y="778">- totalSize: long</text>
+<line x1="1110" y1="793" x2="1460" y2="793" class="edge" stroke-width="1.4"/>
+<text class="line" x="1127" y="822">+ start(root: Element): void</text>
+<text class="line" x="1127" y="851">+ visit(file: FileNode): void</text>
+<text class="line" x="1127" y="880">+ visit(directory: DirectoryNode): void</text>
+<text class="line" x="1127" y="909">+ getTotalSize(): long</text>
+<rect x="1500" y="695" width="410" height="313" fill="#f1f4f8" stroke="#82909f" stroke-width="1.8"/>
+<rect x="1500" y="695" width="410" height="56" fill="#e2e8f0" stroke="#82909f" stroke-width="1.8"/>
+<text class="head" text-anchor="middle" x="1705.0" y="731">SearchVisitor</text>
+<text class="line" x="1517" y="778">- nameFilter: String</text>
+<text class="line" x="1517" y="807">- minimumSize: long</text>
+<text class="line" x="1517" y="836">- matchingPaths: List&lt;String&gt;</text>
+<text class="line" x="1517" y="865">- root: Element</text>
+<line x1="1500" y1="880" x2="1910" y2="880" class="edge" stroke-width="1.4"/>
+<text class="line" x="1517" y="909">+ start(root: Element): void</text>
+<text class="line" x="1517" y="938">+ visit(file: FileNode): void</text>
+<text class="line" x="1517" y="967">+ visit(directory: DirectoryNode): void</text>
+<text class="line" x="1517" y="996">+ getMatchingPaths(): List&lt;String&gt;</text>
+<rect x="1950" y="695" width="390" height="371" fill="#f1f4f8" stroke="#82909f" stroke-width="1.8"/>
+<rect x="1950" y="695" width="390" height="56" fill="#e2e8f0" stroke="#82909f" stroke-width="1.8"/>
+<text class="head" text-anchor="middle" x="2145.0" y="731">StatisticsVisitor</text>
+<text class="line" x="1967" y="778">- fileCount: int</text>
+<text class="line" x="1967" y="807">- directoryCount: int</text>
+<text class="line" x="1967" y="836">- maxDepth: int</text>
+<text class="line" x="1967" y="865">- root: Element</text>
+<line x1="1950" y1="880" x2="2340" y2="880" class="edge" stroke-width="1.4"/>
+<text class="line" x="1967" y="909">+ start(root: Element): void</text>
+<text class="line" x="1967" y="938">+ visit(file: FileNode): void</text>
+<text class="line" x="1967" y="967">+ visit(directory: DirectoryNode): void</text>
+<text class="line" x="1967" y="996">+ getFileCount(): int</text>
+<text class="line" x="1967" y="1025">+ getDirectoryCount(): int</text>
+<text class="line" x="1967" y="1054">+ getMaxDepth(): int</text>
+<path class="edge dependency" d="M 1175 240 L 1175 302"/>
+<polygon points="1175,318 1168,303 1182,303" fill="#697582"/>
+<text class="note" x="1194" y="277">uses</text>
+<path class="edge implements" d="M 415 605 L 415 499"/>
+<polygon points="415,475 402,499 428,499" fill="white" stroke="#697582" stroke-width="2.2"/>
+<path class="edge" d="M 240 1010 L 240 942 L 425 942 L 425 894"/>
+<path class="edge" d="M 755 995 L 755 942 L 425 942"/>
+<polygon points="425,870 412,894 438,894" fill="white" stroke="#697582" stroke-width="2.2"/>
+<path class="edge implements" d="M 1360 395 L 1611 395"/>
+<polygon points="1635,395 1611,382 1611,408" fill="white" stroke="#697582" stroke-width="2.2"/>
+<path class="edge implements" d="M 1285 695 L 1285 592 L 1920 592 L 1920 518"/>
+<path class="edge implements" d="M 1705 695 L 1705 592"/>
+<path class="edge implements" d="M 2145 695 L 2145 592 L 1920 592"/>
+<polygon points="1920,494 1907,518 1933,518" fill="white" stroke="#697582" stroke-width="2.2"/>
+<path class="edge" d="M 1020 1072 L 1090 1072 L 1090 1155 L 1020 1155"/>
+<polygon points="1020,1072 1034,1062 1048,1072 1034,1082" fill="#697582"/>
+<text class="note" x="1099" y="1103">children</text>
+<text class="note" x="1099" y="1129">0..* AbstractElement</text>
+<text class="note" x="85" y="1245">Solid hollow triangle: extends  ·  Dashed hollow triangle: implements  ·  Filled diamond: composition  ·  Dashed arrow: uses</text>
+</svg>
